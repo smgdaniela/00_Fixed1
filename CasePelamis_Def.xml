@@ -31,7 +31,7 @@
                     </drawcylinder>
 				</list>
 				-->
-                <list name="Element" printcall="false">
+                <list name="Element" printcall="false"> 
 				<setdrawmode mode="full" /> 
 						<setmkbound mk="1" /> 
                     <drawfilestl file="geometry.stl">
@@ -44,6 +44,7 @@
                         <point x="-1" y="-1" z="0" />
                         <size x="30" y="2" z="6" />
                     </fillbox>
+					
                     <!-- <move x="1.3" y="0" z="0" /> -->
                 </list>
                 <mainlist>
@@ -71,8 +72,12 @@
                     <!-- First element -->
                     <!--<setmkbound mk="0" />
                     <runlist name="arm" /> -->
+					
+					
 					<setmkbound mk="1" />
-                    <runlist name="Element" />
+                    <runlist name="Element" /> 
+				
+					
                     <!-- Second element 
                     <setmkbound mk="1" />
 					<runlist name="Element" />
@@ -124,11 +129,11 @@
     </casedef>
     <execution>
         <special>
-            <chrono>
+            <!--<chrono>
                 <_savedata value="0.02" comment="Saves CSV with data exchange for each time interval (0=all steps)" />
                 <schemescale value="1" comment="Scale used to create the initial scheme of Chrono objects (default=1)" />
-                <!--<bodyfloating id="arm" mkbound="0" />-->
-				<bodyfixed id="Element" mkbound="1" modelfile="AutoActual"/>
+                <!--<bodyfloating id="arm" mkbound="0" />-
+				<bodyfixed id="Element" mkbound="1" modelfile="AutoActual"/>->
                 
 				
 				
@@ -184,7 +189,7 @@
                     <stiffness value="0" comment="Torsional stiffness [Nm/rad]" />
                     <damping value="0" comment="Torsional damping [Nms/rad]" />
                 </link_hinge> -->
-            </chrono>
+            <!--</chrono> -->
             <wavepaddles>
                 <piston>
                     <mkbound value="10" comment="Mk-Bound of selected particles" />
@@ -215,7 +220,7 @@
             <parameter key="Shifting" value="0" comment="Shifting mode 0:None, 1:Ignore bound, 2:Ignore fixed, 3:Full (default=0)" />
             <parameter key="ShiftCoef" value="-2" comment="Coefficient for shifting computation (default=-2)" />
             <parameter key="ShiftTFS" value="0" comment="Threshold to detect free surface. Typically 1.5 for 2D and 2.75 for 3D (default=0)" />
-            <parameter key="RigidAlgorithm" value="3" comment="Rigid Algorithm 0:collision-free, 1:SPH, 2:DEM, 3:Chrono (default=1)" />
+            <parameter key="RigidAlgorithm" value="1" comment="Rigid Algorithm 0:collision-free, 1:SPH, 2:DEM, 3:Chrono (default=1)" />
             <parameter key="FtPause" value="0.0" comment="Time to freeze the floatings at simulation start (warmup) (default=0)" units_comment="seconds" />
             <parameter key="CoefDtMin" value="0.05" comment="Coefficient to calculate minimum time step dtmin=coefdtmin*h/speedsound (default=0.05)" />
             <parameter key="DtIni" value="0" comment="Initial time step. Use 0 to defult use (default=h/speedsound)" units_comment="seconds" />
@@ -223,7 +228,7 @@
             <parameter key="DtFixed" value="0" comment="Fixed Dt value. Use 0 to disable (default=disabled)" units_comment="seconds" />
             <parameter key="DtFixedFile" value="NONE" comment="Dt values are loaded from file. Use NONE to disable (default=disabled)" units_comment="milliseconds (ms)" />
             <parameter key="DtAllParticles" value="0" comment="Velocity of particles used to calculate DT. 1:All, 0:Only fluid/floating (default=0)" />
-            <parameter key="TimeMax" value="10" comment="Time of simulation" units_comment="seconds" />
+            <parameter key="TimeMax" value="0.05" comment="Time of simulation" units_comment="seconds" />
             <parameter key="TimeOut" value="0.05" comment="Time out data" units_comment="seconds" />
             <parameter key="PartsOutMax" value="1" comment="%/100 of fluid particles allowed to be excluded from domain (default=1)" units_comment="decimal" />
             <parameter key="RhopOutMin" value="700" comment="Minimum rhop valid (default=700)" units_comment="kg/m^3" />

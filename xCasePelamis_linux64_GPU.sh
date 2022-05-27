@@ -60,7 +60,7 @@ fi
 
 if [ $option -eq 2 -o $option -eq 1 ]; then
 export dirout2=${dirout}/particles
-${partvtk} -dirin ${diroutdata} -savevtk ${dirout2}/PartFloating -onlytype:-all,+floating
+${partvtk} -dirin ${diroutdata} -savevtk ${dirout2}/PartFloating -onlytype:-all,+fixed
 if [ $? -ne 0 ] ; then fail; fi
 
 ${partvtk} -dirin ${diroutdata} -savevtk ${dirout2}/PartFluid -onlytype:-all,+fluid
@@ -73,7 +73,7 @@ ${partvtkout} -dirin ${diroutdata} -savevtk ${dirout2}/PartFluidOut -SaveResume 
 if [ $? -ne 0 ] ; then fail; fi
 
 export dirout2=${dirout}/boundary
-${boundaryvtk} -loadvtk AutoActual -motiondata ${diroutdata} -savevtkdata ${dirout2}/Pelamis -onlytype:floating
+${boundaryvtk} -loadvtk AutoActual -motiondata ${diroutdata} -savevtkdata ${dirout2}/Pelamis -onlytype:fixed
 if [ $? -ne 0 ] ; then fail; fi
 
 fi
