@@ -51,7 +51,7 @@ if not "%ERRORLEVEL%" == "0" goto fail
 
 :postprocessing
 set dirout2=%dirout%\particles
-%partvtk% -dirin %diroutdata% -savevtk %dirout2%/PartFloating -onlytype:-all,+floating
+%partvtk% -dirin %diroutdata% -savevtk %dirout2%/PartFixed -onlytype:-all,+fixed
 if not "%ERRORLEVEL%" == "0" goto fail
 
 %partvtk% -dirin %diroutdata% -savevtk %dirout2%/PartFluid -onlytype:-all,+fluid
@@ -66,7 +66,7 @@ if not "%ERRORLEVEL%" == "0" goto fail
 rem -dirin data -savevtk data/particles/PartFluidOut -SaveResume data/particles/_ResumeFluidOut
 
 set dirout2=%dirout%\boundary
-%boundaryvtk% -loadvtk AutoActual -motiondata %diroutdata% -savevtkdata %dirout2%/Pelamis -onlytype:floating
+%boundaryvtk% -loadvtk AutoActual -motiondata %diroutdata% -savevtkdata %dirout2%/Pelamis -onlytype:fixed
 if not "%ERRORLEVEL%" == "0" goto fail
 
 
